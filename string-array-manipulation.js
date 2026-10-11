@@ -1,12 +1,18 @@
-// ===== Case 1: String Manipulation =====
-// GANTI string ini dengan string asli dari soal (bagian atas soal)
-const rawNames = "  Riyanda Azis, Arifian   Saputra ,  HASAN Harahap  ";
+// ===== Case 1: User Data Cleaner =====
+const rawNames = " riyanda_azis, ARIFIAN_SAPUTRA , hasan_harahap ";
 
+// 1. Bersihkan whitespace di awal & akhir string
 const cleaned = rawNames.trim();
+
+// 2. Ubah jadi array nama
 const namesArray = cleaned.split(",");
+
+// 3. Format tiap nama: lowercase tanpa spasi liar
 const formattedNames = namesArray.map((name) =>
   name.trim().toLowerCase().split(/\s+/).join("_")
 );
+
+// 4. Gabungkan kembali jadi string
 const result1 = formattedNames.join(" | ");
 
 console.log("Case 1:", result1);
@@ -20,12 +26,15 @@ const products = [
   { name: "Keyboard", price: 50, active: true },
 ];
 
+// 1. Saring produk yang active: true
 const activeProducts = products.filter((product) => product.active);
 
+// 2. Array baru berisi nama produk huruf kapital
 const upperCaseNames = activeProducts.map((product) =>
   product.name.toUpperCase()
 );
 
+// 3. Hitung total harga produk aktif
 const totalPrice = activeProducts.reduce(
   (total, product) => total + product.price,
   0
